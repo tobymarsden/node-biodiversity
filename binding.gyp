@@ -11,8 +11,8 @@
       ],
       "defines": [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
       "include_dirs": ["<(module_root_dir)", "<!(node -p \"require('node-addon-api').include_dir\")"],
-      "target_name": "binding",
-      "sources": [ "binding.cc" ],
+      "target_name": "gnparser",
+      "sources": [ "gnparser.cc" ],
       "libraries": [ "-Wl,-rpath,<(module_root_dir)", '-lgnparser', '-L<(module_root_dir)'],
     }
   ]

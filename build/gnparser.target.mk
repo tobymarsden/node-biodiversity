@@ -27,7 +27,7 @@ CFLAGS_Debug := \
 	-gdwarf-2 \
 	-fvisibility=hidden \
 	-mmacosx-version-min=10.13 \
-	-arch x86_64 \
+	-arch arm64 \
 	-Wall \
 	-Wendif-labels \
 	-W \
@@ -52,13 +52,13 @@ CFLAGS_OBJC_Debug :=
 CFLAGS_OBJCC_Debug :=
 
 INCS_Debug := \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/include/node \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/src \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/openssl/config \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/openssl/openssl/include \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/uv/include \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/zlib \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/v8/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/include/node \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/src \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/openssl/config \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/openssl/openssl/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
 	-I/Users/toby/Code/node-biodiversity \
 	-I$(srcdir)/node_modules/node-addon-api
 
@@ -84,7 +84,7 @@ CFLAGS_Release := \
 	-gdwarf-2 \
 	-fvisibility=hidden \
 	-mmacosx-version-min=10.13 \
-	-arch x86_64 \
+	-arch arm64 \
 	-Wall \
 	-Wendif-labels \
 	-W \
@@ -109,13 +109,13 @@ CFLAGS_OBJC_Release :=
 CFLAGS_OBJCC_Release :=
 
 INCS_Release := \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/include/node \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/src \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/openssl/config \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/openssl/openssl/include \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/uv/include \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/zlib \
-	-I/Users/toby/Library/Caches/node-gyp/16.2.0/deps/v8/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/include/node \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/src \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/openssl/config \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/openssl/openssl/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
+	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
 	-I/Users/toby/Code/node-biodiversity \
 	-I$(srcdir)/node_modules/node-addon-api
 
@@ -152,7 +152,7 @@ LDFLAGS_Debug := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.13 \
-	-arch x86_64 \
+	-arch arm64 \
 	-L$(builddir) \
 	-stdlib=libc++
 
@@ -164,7 +164,7 @@ LDFLAGS_Release := \
 	-undefined dynamic_lookup \
 	-Wl,-search_paths_first \
 	-mmacosx-version-min=10.13 \
-	-arch x86_64 \
+	-arch arm64 \
 	-L$(builddir) \
 	-stdlib=libc++
 

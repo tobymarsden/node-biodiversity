@@ -59,7 +59,7 @@ INCS_Debug := \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
-	-I/Users/toby/Code/node-biodiversity \
+	-I/Users/toby/Code/node-biodiversity/macos \
 	-I$(srcdir)/node_modules/node-addon-api
 
 DEFS_Release := \
@@ -116,11 +116,11 @@ INCS_Release := \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
-	-I/Users/toby/Code/node-biodiversity \
+	-I/Users/toby/Code/node-biodiversity/macos \
 	-I$(srcdir)/node_modules/node-addon-api
 
 OBJS := \
-	$(obj).target/$(TARGET)/gnparser.o
+	$(obj).target/$(TARGET)/macos/gnparser.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
@@ -173,9 +173,9 @@ LIBTOOLFLAGS_Release := \
 	-Wl,-search_paths_first
 
 LIBS := \
-	-Wl,-rpath,/Users/toby/Code/node-biodiversity \
+	-Wl,-rpath,/Users/toby/Code/node-biodiversity/macos/ \
 	-lgnparser \
-	-L/Users/toby/Code/node-biodiversity
+	-L/Users/toby/Code/node-biodiversity/macos/
 
 $(builddir)/gnparser.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/gnparser.node: LIBS := $(LIBS)

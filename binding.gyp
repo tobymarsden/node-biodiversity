@@ -10,10 +10,10 @@
         }]
       ],
       "defines": [ 'NAPI_DISABLE_CPP_EXCEPTIONS' ],
-      "include_dirs": ["<(module_root_dir)", "<!(node -p \"require('node-addon-api').include_dir\")"],
+      "include_dirs": ["/Users/toby/Code/node-biodiversity/macos/", "<!(node -p \"require('node-addon-api').include_dir\")"],
       "target_name": "gnparser",
-      "sources": [ "gnparser.cc" ],
-      "libraries": [ "-Wl,-rpath,<(module_root_dir)", '-lgnparser', '-L<(module_root_dir)'],
+      "sources": [ "macos/gnparser.cc" ],
+      "libraries": [ "-Wl,-rpath,/Users/toby/Code/node-biodiversity/macos/", '-lgnparser', '-L/Users/toby/Code/node-biodiversity/macos/'],
     }
   ]
 }

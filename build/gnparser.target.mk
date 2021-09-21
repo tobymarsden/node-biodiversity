@@ -59,8 +59,8 @@ INCS_Debug := \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
-	-I/Users/toby/Code/node-biodiversity/macos \
-	-I$(srcdir)/node_modules/node-addon-api
+	-I$(srcdir)/node_modules/node-addon-api \
+	-I/Users/toby/Code/node-biodiversity/macos-arm64
 
 DEFS_Release := \
 	'-DNODE_GYP_MODULE_NAME=gnparser' \
@@ -116,11 +116,11 @@ INCS_Release := \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/uv/include \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/zlib \
 	-I/Users/toby/Library/Caches/node-gyp/16.5.0/deps/v8/include \
-	-I/Users/toby/Code/node-biodiversity/macos \
-	-I$(srcdir)/node_modules/node-addon-api
+	-I$(srcdir)/node_modules/node-addon-api \
+	-I/Users/toby/Code/node-biodiversity/macos-arm64
 
 OBJS := \
-	$(obj).target/$(TARGET)/macos/gnparser.o
+	$(obj).target/$(TARGET)/macos-arm64/gnparser.o
 
 # Add to the list of files we specially track dependencies for.
 all_deps += $(OBJS)
@@ -173,16 +173,35 @@ LIBTOOLFLAGS_Release := \
 	-Wl,-search_paths_first
 
 LIBS := \
-	-Wl,-rpath,/Users/toby/Code/node-biodiversity/macos/ \
-	-lgnparser \
-	-L/Users/toby/Code/node-biodiversity/macos/
+	-L/Users/toby/Code/node-biodiversity/macos-arm64 \
+	-lgnparser
 
 $(builddir)/gnparser.node: GYP_LDFLAGS := $(LDFLAGS_$(BUILDTYPE))
 $(builddir)/gnparser.node: LIBS := $(LIBS)
 $(builddir)/gnparser.node: GYP_LIBTOOLFLAGS := $(LIBTOOLFLAGS_$(BUILDTYPE))
+$(builddir)/gnparser.node: export BUILT_FRAMEWORKS_DIR := ${abs_builddir}
+$(builddir)/gnparser.node: export BUILT_PRODUCTS_DIR := ${abs_builddir}
+$(builddir)/gnparser.node: export CHROMIUM_STRIP_SAVE_FILE := 
+$(builddir)/gnparser.node: export CONFIGURATION := ${BUILDTYPE}
+$(builddir)/gnparser.node: export DYLIB_INSTALL_NAME_BASE := @rpath
+$(builddir)/gnparser.node: export EXECUTABLE_NAME := gnparser.node
+$(builddir)/gnparser.node: export EXECUTABLE_PATH := gnparser.node
+$(builddir)/gnparser.node: export FULL_PRODUCT_NAME := gnparser.node
+$(builddir)/gnparser.node: export LD_DYLIB_INSTALL_NAME := @rpath/gnparser.node
+$(builddir)/gnparser.node: export MACH_O_TYPE := mh_bundle
+$(builddir)/gnparser.node: export PRODUCT_NAME := gnparser
+$(builddir)/gnparser.node: export PRODUCT_TYPE := com.apple.product-type.library.dynamic
+$(builddir)/gnparser.node: export SDKROOT := /Library/Developer/CommandLineTools/SDKs/MacOSX.sdk
+$(builddir)/gnparser.node: export SRCROOT := ${abs_srcdir}/
+$(builddir)/gnparser.node: export SOURCE_ROOT := ${SRCROOT}
+$(builddir)/gnparser.node: export TARGET_BUILD_DIR := ${abs_builddir}
+$(builddir)/gnparser.node: export TEMP_DIR := ${TMPDIR}
+$(builddir)/gnparser.node: export XCODE_VERSION_ACTUAL := 1240
+$(builddir)/gnparser.node: builddir := $(abs_builddir)
+$(builddir)/gnparser.node: POSTBUILDS := 'cd ""' 'echo POSTBUILD\(gnparser\) Change libgnparser load path' 'install_name_tool -change libgnparser.so @loader_path/../../macos-arm64/libgnparser.so "$(builddir)/gnparser.node"'
 $(builddir)/gnparser.node: TOOLSET := $(TOOLSET)
 $(builddir)/gnparser.node: $(OBJS) FORCE_DO_CMD
-	$(call do_cmd,solink_module)
+	$(call do_cmd,solink_module,,1)
 
 all_deps += $(builddir)/gnparser.node
 # Add target alias

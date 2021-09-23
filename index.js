@@ -18,11 +18,7 @@ for (var record of data) {
   arr.push(record.name)
 }
 console.time("parse")
-//const res = parse(arr)
-//for (var record of arr) {
-//  parse(record)
-//}
-console.log(parse("Drosera intermedia"))
+console.log(parse("Pardosa moesta Banks, 1892"))
 console.timeEnd("parse")
 
 module.exports = {
